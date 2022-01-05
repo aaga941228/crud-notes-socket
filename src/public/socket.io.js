@@ -19,7 +19,6 @@ const saveNote = (title, description) => {
  * @param {string} description 
  */
 const updateNote = (id, title, description) => {
-    console.log('udaptenote', id, title, description)
     socket.emit('client:updatenote', {
         id,
         title,
@@ -27,8 +26,21 @@ const updateNote = (id, title, description) => {
     });
 };
 
-const deleteNote = id => socket.emit('client:deletenote', id);
-const getNote = id => socket.emit('client:getnote', id);
+/**
+ * 
+ * @param {string} id
+ */
+const deleteNote = id => {
+    socket.emit('client:deletenote', id)
+};
+
+/**
+ * 
+ * @param {string} id 
+ */
+const getNote = id => {
+    socket.emit('client:getnote', id)
+};
 
 socket.on('server:newnote', note => appendNote(note));
 socket.on('server:loadnotes', notes => renderNotes(notes));
@@ -38,5 +50,4 @@ socket.on('server:selectednote', note => {
     title.value = note.title;
     description.value = note.description;
     noteId = note.id;
-    console.log('id',noteId)
 });
