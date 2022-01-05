@@ -4,7 +4,7 @@
   "description": "simple crud with socket.io",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js --exec babel-node",
+    "dev": "nodemon src/index.js --exec babel-node --ignore src/public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alan Ayala",
